@@ -28,8 +28,8 @@
                     <nav className="navBar">
                         <span className="title">Todo App</span>
                         <div>
-                            <button style={{ marginRight: "1rem" }}>Current Todo</button>
-                            <button style={{ marginRight: "1rem" }}>Add Todo</button>
+                            <button >Current Todo</button>
+                            <button >Add Todo</button>
                             <button>Completed Todo</button>
                         </div>
                     </nav>
@@ -38,11 +38,26 @@
 
         }
 
-        function InputTodo() {
+
+        function InputTodo({addTodo}) {
+            const [todo, setTodo] = React.useState('');
+
+            function getTodo(event) {
+                setTodo(event.target.value);
+            }
+
+            function handleAddButton() {
+                if (todo !== '') {
+                    addTodo(todo);
+                    setTodo('');
+                }
+
+            }
+
             return (
                 <div>
-                    <input type="text" placeholder="Enter your todo"></input>
-                    <button >Add To List</button>
+                    <input type="text" placeholder="Enter your todo" onChange={getTodo} value={todo}></input>
+                    <button onClick={handleAddButton}>Add To List</button>
                     <p className="todoList"></p>
                 </div>
             )
@@ -50,15 +65,28 @@
 
 
         function Application() {
-            const [todoList, setTodoList] = React.useState('');
+            const [todoList, setTodoList] = React.useState([]);
+
+
+            function addTodo(todo) {
+                setTodoList([...todoList, todo]);
+            }
+
             return (
                 <>
                     <NavBar />
-                    <InputTodo />
+                    <InputTodo addTodo={addTodo}/>
+                    <div>
+                        {todoList.map((eachTodo, index)=>{
+                            //key is very imp in map as it helps react keep track of each element which allows rendering easily. 
+                            return <p key={index}>{eachTodo} <button> delete </button></p>
+                        })}
+                    </div>
                 </>
             )
         }
 
+      
         ReactDOM.render(<Application />, container);
 
     </script>

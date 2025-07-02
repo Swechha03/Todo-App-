@@ -39,7 +39,7 @@
         }
 
 
-        function InputTodo({addTodo}) {
+        function InputTodo({ addTodo }) {
             const [todo, setTodo] = React.useState('');
 
             function getTodo(event) {
@@ -72,21 +72,42 @@
                 setTodoList([...todoList, todo]);
             }
 
+            function deleteButton(index){
+                const newTodoList=[...todoList];
+                newTodoList.splice(index,1);
+                setTodoList(newTodoList);
+            }
+
             return (
                 <>
                     <NavBar />
-                    <InputTodo addTodo={addTodo}/>
-                    <div>
-                        {todoList.map((eachTodo, index)=>{
+                    <InputTodo addTodo={addTodo} />
+                    <div class="todoItem">
+                        {todoList.map((eachTodo, index) => {
                             //key is very imp in map as it helps react keep track of each element which allows rendering easily. 
-                            return <p key={index}>{eachTodo} <button> delete </button></p>
+                            return <>
+                                <p key={index}>
+                                    {eachTodo}
+                                    <button style={{ marginLeft: "10px", marginRight: "10px" }}>{dayjs().format('YYYY-MM-DD')}</button>
+                                    <button
+                                        style={{ marginLeft: "10px", marginRight: "10px" }}
+                                        onClick={()=>{
+                                            deleteButton(index);
+                                        }}
+                                    >
+                                        delete
+                                    </button>
+                                    <button style={{ marginLeft: "10px", marginRight: "10px" }}> Completed </button>
+                                </p>
+
+                            </>
                         })}
                     </div>
                 </>
             )
         }
 
-      
+
         ReactDOM.render(<Application />, container);
 
     </script>

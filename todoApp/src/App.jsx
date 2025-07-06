@@ -1,4 +1,4 @@
-import { useState, useEffect, Fragment } from 'react'
+import { useState, useEffect} from 'react'
 import dayjs from 'dayjs'
 import './App.css'
 import { NavBar } from './components/NavBar'
@@ -42,30 +42,17 @@ function App() {
         {todoList.map((eachTodo, index) => {
           //key is very imp in map as it helps react keep track of each element which allows rendering easily. 
           //assigning the key to the top element since we have multiple element inside and since the empty fragment cannot have an attribute, using React.Fragment
-          return <Fragment key={index}>
-            <p>
-              {eachTodo}
-              <button style={{ marginLeft: "10px", marginRight: "10px" }}>{dayjs().format('YYYY-MM-DD')}</button>
-              <button
-                style={{ marginLeft: "10px", marginRight: "10px" }}
-                onClick={() => {
-                  deleteButton(index);
-                }}
-              >
-                delete
-              </button>
-              <button
-                style={{ marginLeft: "10px", marginRight: "10px" }}
-                onClick={() => {
-                  completedTodoList(index)
-                }
-                }
-              >
-                Completed
-              </button>
-            </p>
+          return (
+  <div key={index} className="todoItem">
+    <p>{eachTodo}</p>
+    <div className="button-group">
+      <button>{dayjs().format('YYYY-MM-DD')}</button>
+      <button onClick={() => deleteButton(index)}>Delete</button>
+      <button onClick={() => completedTodoList(index)}>Completed</button>
+    </div>
+  </div>
+);
 
-          </Fragment>
         })}
       </div>
     </div>

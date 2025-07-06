@@ -13,27 +13,37 @@
 .todoItem {
   background-color: #fff0f5;
   border: 1px solid #ffadc6;
-  padding: 10px;
+  padding: 15px;
   margin: 10px 0;
   border-radius: 10px;
-  justify-content: space-between;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* align text and buttons to left */
+}
+
+.todoItem p {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  width: 100%;
+  word-break: break-word;
+}
+
+.todoItem .button-group {
+  display: flex;
+  gap: 10px;
 }
 
 .todoItem button {
   background-color: #ff6f91;
   color: white;
   border: none;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 6px;
   font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .todoItem button:hover {
   background-color: #d14d72;
-}
-
-.todoItem p {
-  margin-bottom: 20px;
-  width: 400px;
 }

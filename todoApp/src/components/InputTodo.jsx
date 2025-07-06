@@ -22,7 +22,7 @@ export function InputTodo({ addTodo }) {
     return (
         <div>
             <input type="text" placeholder="Enter your todo" onChange={getTodo} value={todo}></input>
-            <button onClick={handleAddButton}>Add To List</button>
+            <button onClick={handleAddButton}>+</button>
         </div>
     )
 }

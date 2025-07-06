@@ -1,0 +1,15 @@
+import { } from './NavBar.css'
+
+export function NavBar() {
+    return (
+        <div>
+            <nav className="navBar">
+                <span className="title">Todo App</span>
+                <div>
+                    <button onClick="">Completed Todo</button>
+                </div>
+            </nav>
+        </div>
+    )
+
+}

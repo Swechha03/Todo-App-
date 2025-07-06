@@ -1,0 +1,32 @@
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffd6d6;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fa6992;
+}
+
+.navBar button,
+.deleteButton {
+    background-color: #fff0f5;
+    border: 1px solid #ffadc6;
+    padding: 8px 12px;
+    margin-left: 10px;
+    border-radius: 8px;
+    color: #d14d72;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.navBar button:hover {
+    background-color: #ffadc6;
+    color: white;
+}
